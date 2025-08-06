@@ -21,29 +21,29 @@ import teamImage from "@/assets/team-photo.jpg";
 const About = () => {
   const milestones = [
     {
-      year: "2020",
-      title: "TechHub Founded",
-      description: "Started with a vision to democratize tech education in Nigeria"
+      year: "2018",
+      title: "JE Gadgets Founded",
+      description: "Started as JE Gadgets, focusing on smartphone repair and diagnostics training"
     },
     {
-      year: "2021",
-      title: "First 100 Graduates",
-      description: "Celebrated our first cohort of successful tech professionals"
+      year: "2018-2021",
+      title: "First 45 Graduates",
+      description: "Trained 28 individuals in smartphone repair, followed by 17 more in gadget repair"
     },
     {
-      year: "2022",
-      title: "Service Expansion",
-      description: "Added gadget repair and sales services to serve the community better"
+      year: "2022-2023",
+      title: "NITDA Partnership",
+      description: "Partnered with NITDA to deliver training in Kogi and Niger states, impacting 1,000+ participants"
     },
     {
       year: "2023",
-      title: "Industry Partnerships",
-      description: "Partnered with 50+ tech companies for job placements"
+      title: "Rebranded to JE Tech Hub",
+      description: "Expanded beyond repair training to include advanced IT and software development courses"
     },
     {
       year: "2024",
-      title: "500+ Success Stories",
-      description: "Reached milestone of 500+ graduates now working in tech"
+      title: "Continued Growth",
+      description: "30 graduates with ongoing programs, supported by JE Logistics for equipment delivery"
     }
   ];
 
@@ -102,10 +102,10 @@ const About = () => {
   ];
 
   const achievements = [
-    { number: "500+", label: "Graduates" },
-    { number: "95%", label: "Job Placement Rate" },
-    { number: "50+", label: "Partner Companies" },
-    { number: "4.9/5", label: "Student Rating" }
+    { number: "1,000+", label: "Lives Impacted" },
+    { number: "45+", label: "Repair Graduates" },
+    { number: "30+", label: "Current Graduates" },
+    { number: "6+", label: "Years Experience" }
   ];
 
   return (
@@ -116,15 +116,14 @@ const About = () => {
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">
-              👥 About TechHub
+              👥 About JE Tech Hub
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              Empowering the Next Generation of
-              <span className="bg-gradient-to-r from-tech-blue to-tech-purple bg-clip-text text-transparent"> Tech Leaders</span>
+              Delivering Top-Tier 
+              <span className="bg-gradient-to-r from-tech-blue to-tech-purple bg-clip-text text-transparent"> Tech Solutions</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Since 2020, we've been at the forefront of technology education in Nigeria, 
-              transforming lives through comprehensive training programs and professional services.
+              At JE Tech Hub, we are driven by a single, powerful mission: to connect education and technology through innovative and practical tutoring that enhances tech skills for individuals and communities alike.
             </p>
           </div>
         </div>
@@ -136,40 +135,32 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-                Our Story
+                Our Journey
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  TechHub was born from a simple observation: Nigeria has incredible talent, 
-                  but many young people lack access to quality tech education that could 
-                  transform their careers and lives.
+                  Founded in 2018 as JE Gadgets, we recognized the need for technical skills training in our community. Initially focused on smartphone repair and diagnostics, we trained 28 individuals, many of whom launched their own repair businesses.
                 </p>
                 <p>
-                  Founded in 2020 by a team of experienced tech professionals, we set out 
-                  to bridge this gap by creating comprehensive, practical training programs 
-                  that prepare students for real-world tech careers.
+                  Over the years, we trained an additional 17 individuals in gadget repair. In 2022/2023, we partnered with the National Information Technology Development Agency (NITDA) to deliver training programs in Kogi and Niger states, impacting over 1,000 participants across various digital and technical skills.
                 </p>
                 <p>
-                  What started as a small training center has grown into a comprehensive 
-                  tech hub offering education, repair services, and gadget sales - all 
-                  under one roof, serving our community's diverse technology needs.
+                  In 2023, we rebranded to JE Tech Hub to reflect our expanded offerings, moving beyond repair training to include advanced IT and software development courses. Operating under JE Gadgets, we offer hands-on training with real-world equipment.
                 </p>
                 <p>
-                  Today, we're proud to have helped over 500 students launch successful 
-                  tech careers while building partnerships with leading companies across 
-                  Nigeria and beyond.
+                  Our sister brand, JE Logistics, supports us by providing logistics and delivery services, including computer equipment for our online training. With 30 graduates and ongoing programs, JE Tech Hub continues to evolve, empowering individuals with essential digital skills.
                 </p>
               </div>
             </div>
             <div className="relative">
               <img 
                 src={teamImage} 
-                alt="TechHub Team" 
+                alt="JE Tech Hub Team" 
                 className="rounded-2xl shadow-tech w-full"
               />
               <Card className="absolute -bottom-6 -left-6 bg-white shadow-lg border">
                 <CardContent className="p-4">
-                  <div className="text-2xl font-bold text-primary">500+</div>
+                  <div className="text-2xl font-bold text-primary">1,000+</div>
                   <div className="text-sm text-muted-foreground">Lives Transformed</div>
                 </CardContent>
               </Card>
@@ -191,9 +182,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-center leading-relaxed">
-                  To democratize access to quality technology education and services, 
-                  empowering individuals and communities to thrive in the digital economy 
-                  through practical skills, innovation, and excellence.
+                  In today's fast-paced world, technology is at the heart of nearly every industry. At JE Tech Hub, we aim to bridge the gap between education and the ever-evolving tech landscape through carefully designed courses and hands-on approach, ensuring every learner gains real-world experience they can immediately apply.
                 </p>
               </CardContent>
             </Card>
@@ -207,9 +196,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-center leading-relaxed">
-                  To be Africa's leading technology education and services hub, 
-                  recognized for producing world-class tech professionals and 
-                  driving digital transformation across communities.
+                  "Shaping the future of tech—raising brilliant minds and crafting skilled professionals who drive innovation, solve real-world challenges, and make a meaningful impact in the tech industry and beyond."
                 </p>
               </CardContent>
             </Card>
@@ -254,10 +241,10 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
-              Our Journey
+              Our Milestones
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Key milestones in our mission to transform tech education in Nigeria.
+              From JE Gadgets to JE Tech Hub - key milestones in our journey to transform tech education in Nigeria.
             </p>
           </div>
 
