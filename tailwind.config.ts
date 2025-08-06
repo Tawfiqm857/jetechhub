@@ -61,7 +61,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'tech-blue': 'hsl(var(--tech-blue))',
+				'tech-purple': 'hsl(var(--tech-purple))',
+				'tech-cyan': 'hsl(var(--tech-cyan))'
+			},
+			fontFamily: {
+				heading: 'var(--font-heading)',
+				body: 'var(--font-body)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

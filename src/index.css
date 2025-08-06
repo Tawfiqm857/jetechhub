@@ -17,24 +17,40 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 236 72% 24%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 220 14% 96%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 220 14% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 236 72% 24%;
+
+    /* Custom tech hub design tokens */
+    --tech-blue: 236 72% 24%;
+    --tech-purple: 262 83% 58%;
+    --tech-cyan: 196 94% 67%;
+    --tech-gradient: linear-gradient(135deg, hsl(236 72% 24%) 0%, hsl(262 83% 58%) 100%);
+    --tech-gradient-subtle: linear-gradient(135deg, hsl(236 72% 24% / 0.1) 0%, hsl(262 83% 58% / 0.1) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(236 72% 24%) 0%, hsl(262 83% 58%) 50%, hsl(196 94% 67%) 100%);
+    
+    /* Shadows */
+    --shadow-tech: 0 10px 40px hsl(236 72% 24% / 0.1);
+    --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
+    
+    /* Typography */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
 
     --radius: 0.5rem;
 
@@ -65,7 +81,7 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 262 83% 58%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -74,7 +90,7 @@ All colors MUST be HSL.
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 236 72% 24%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
@@ -82,7 +98,14 @@ All colors MUST be HSL.
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 262 83% 58%;
+
+    /* Dark mode custom tokens */
+    --tech-gradient: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(236 72% 24%) 100%);
+    --tech-gradient-subtle: linear-gradient(135deg, hsl(262 83% 58% / 0.1) 0%, hsl(236 72% 24% / 0.1) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(262 83% 58%) 0%, hsl(236 72% 24%) 50%, hsl(196 94% 67%) 100%);
+    --shadow-tech: 0 10px 40px hsl(262 83% 58% / 0.2);
+    --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +123,52 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+  }
+
+  /* Custom animations and utilities */
+  .tech-gradient {
+    background: var(--tech-gradient);
+  }
+
+  .tech-gradient-subtle {
+    background: var(--tech-gradient-subtle);
+  }
+
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .shadow-tech {
+    box-shadow: var(--shadow-tech);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Smooth animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
