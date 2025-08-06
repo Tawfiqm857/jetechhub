@@ -16,6 +16,12 @@ import {
   Download,
   Calendar
 } from "lucide-react";
+import softwareDevImage from "@/assets/course-software-dev.jpg";
+import uiuxDesignImage from "@/assets/course-uiux-design.jpg";
+import dataAnalysisImage from "@/assets/course-data-analysis.jpg";
+import digitalMarketingImage from "@/assets/course-digital-marketing.jpg";
+import videoEditingImage from "@/assets/course-video-editing.jpg";
+import graphicsDesignImage from "@/assets/course-graphics-design.jpg";
 
 const Courses = () => {
   const courses = [
@@ -27,6 +33,7 @@ const Courses = () => {
       level: "Beginner to Advanced",
       price: "₦150,000",
       students: "120+",
+      image: softwareDevImage,
       modules: [
         "HTML, CSS & JavaScript Fundamentals",
         "React & Frontend Development",
@@ -44,6 +51,7 @@ const Courses = () => {
       level: "Beginner to Intermediate",
       price: "₦100,000",
       students: "85+",
+      image: uiuxDesignImage,
       modules: [
         "Design Principles & Theory",
         "User Research & Personas",
@@ -60,6 +68,7 @@ const Courses = () => {
       level: "Intermediate",
       price: "₦130,000",
       students: "95+",
+      image: dataAnalysisImage,
       modules: [
         "Python for Data Analysis",
         "SQL & Database Querying",
@@ -76,6 +85,7 @@ const Courses = () => {
       level: "Beginner",
       price: "₦80,000",
       students: "150+",
+      image: digitalMarketingImage,
       modules: [
         "Digital Marketing Fundamentals",
         "SEO & Content Marketing",
@@ -92,6 +102,7 @@ const Courses = () => {
       level: "Beginner to Intermediate",
       price: "₦90,000",
       students: "70+",
+      image: videoEditingImage,
       modules: [
         "Video Editing Fundamentals",
         "Adobe Premiere Pro",
@@ -108,6 +119,7 @@ const Courses = () => {
       level: "Beginner",
       price: "₦85,000",
       students: "110+",
+      image: graphicsDesignImage,
       modules: [
         "Design Fundamentals",
         "Adobe Creative Suite",
@@ -176,13 +188,18 @@ const Courses = () => {
                 )}
                 
                 <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-tech-blue to-tech-purple rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300">
-                      <course.icon className="h-6 w-6 text-white" />
-                    </div>
-                    <Badge variant="outline" className="text-primary font-semibold">
+                  <div className="relative mb-4">
+                    <img 
+                      src={course.image} 
+                      alt={course.title}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                    <Badge variant="outline" className="absolute top-2 right-2 bg-background/80 backdrop-blur text-primary font-semibold">
                       {course.price}
                     </Badge>
+                    <div className="absolute top-2 left-2 w-10 h-10 bg-gradient-to-r from-tech-blue to-tech-purple rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300">
+                      <course.icon className="h-5 w-5 text-white" />
+                    </div>
                   </div>
                   
                   <CardTitle className="group-hover:text-primary transition-colors text-xl">
