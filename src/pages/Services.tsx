@@ -18,37 +18,83 @@ import {
   CheckCircle,
   ArrowRight,
   Phone,
-  MessageCircle
+  MessageCircle,
+  Code,
+  Palette,
+  Video,
+  BarChart3,
+  TrendingUp
 } from "lucide-react";
 
 const Services = () => {
+  const techServices = [
+    {
+      icon: Code,
+      title: "Software Development",
+      description: "Custom web and mobile app development, API integration, database design",
+      category: "Development",
+      features: ["Full-stack Development", "Mobile Apps", "API Integration", "Database Design"]
+    },
+    {
+      icon: Palette,
+      title: "Graphics Design",
+      description: "Logo design, branding, marketing materials, social media graphics",
+      category: "Design",
+      features: ["Brand Identity", "Marketing Materials", "Social Media Graphics", "Print Design"]
+    },
+    {
+      icon: Video,
+      title: "Video Editing",
+      description: "Professional video editing, motion graphics, promotional videos",
+      category: "Media",
+      features: ["Video Production", "Motion Graphics", "Color Grading", "Audio Enhancement"]
+    },
+    {
+      icon: BarChart3,
+      title: "Data Analysis",
+      description: "Business intelligence, data visualization, predictive analytics",
+      category: "Analytics",
+      features: ["Business Intelligence", "Data Visualization", "Predictive Analytics", "Reporting"]
+    },
+    {
+      icon: Palette,
+      title: "UI/UX Design",
+      description: "User interface design, user experience research, prototyping",
+      category: "Design",
+      features: ["UI Design", "UX Research", "Prototyping", "User Testing"]
+    },
+    {
+      icon: TrendingUp,
+      title: "Digital Marketing",
+      description: "SEO, social media marketing, content creation, ad campaigns",
+      category: "Marketing",
+      features: ["SEO Optimization", "Social Media", "Content Strategy", "Ad Campaigns"]
+    }
+  ];
+
   const repairServices = [
     {
       icon: Smartphone,
       title: "Phone Repairs",
       description: "Screen replacement, battery issues, water damage, software problems",
-      price: "From ₦5,000",
       duration: "1-2 hours"
     },
     {
       icon: Laptop,
       title: "Laptop Repairs",
       description: "Hardware upgrades, virus removal, screen replacement, keyboard fixes",
-      price: "From ₦10,000",
       duration: "1-3 days"
     },
     {
       icon: Tablet,
       title: "Tablet Repairs",
       description: "Touch screen issues, charging problems, software troubleshooting",
-      price: "From ₦8,000",
       duration: "2-4 hours"
     },
     {
       icon: Monitor,
       title: "Monitor Repairs",
       description: "Display issues, power problems, cable and port repairs",
-      price: "From ₦12,000",
       duration: "1-2 days"
     }
   ];
@@ -131,8 +177,66 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Gadget Repairs Section */}
+      {/* Professional Tech Services Section */}
       <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <Code className="h-6 w-6 text-primary" />
+              <Badge variant="secondary">Professional Services</Badge>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
+              Professional Tech Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              From software development to digital marketing, we offer comprehensive tech services to help your business grow and succeed.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {techServices.map((service, index) => (
+              <Card key={index} className="group hover:shadow-tech transition-all duration-300 hover:-translate-y-1">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-14 h-14 bg-gradient-to-r from-tech-blue to-tech-purple rounded-xl flex items-center justify-center group-hover:shadow-glow transition-all duration-300">
+                      <service.icon className="h-7 w-7 text-white" />
+                    </div>
+                    <Badge variant="outline" className="text-primary border-primary/30">
+                      {service.category}
+                    </Badge>
+                  </div>
+                  <CardTitle className="group-hover:text-primary transition-colors text-xl">
+                    {service.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 mb-6">
+                    <h4 className="font-semibold text-sm">Key Features:</h4>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center space-x-2 text-sm">
+                          <CheckCircle className="h-3 w-3 text-green-500" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Button className="w-full group-hover:bg-primary transition-colors">
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Contact for Quote
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gadget Repairs Section */}
+      <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center space-x-2 mb-4">
@@ -163,14 +267,14 @@ const Services = () => {
                 </CardHeader>
                 <CardContent className="text-center">
                   <div className="space-y-2 mb-4">
-                    <div className="text-lg font-bold text-primary">{service.price}</div>
                     <div className="text-sm text-muted-foreground flex items-center justify-center space-x-1">
                       <Clock className="h-3 w-3" />
                       <span>{service.duration}</span>
                     </div>
                   </div>
                   <Button className="w-full group-hover:bg-primary transition-colors">
-                    Get Quote
+                    <MessageCircle className="mr-2 h-4 w-4" />
+                    Contact for Quote
                   </Button>
                 </CardContent>
               </Card>
@@ -214,8 +318,85 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Gadget Sales Section */}
+      {/* Delivery Services Section */}
       <section className="py-20 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center space-x-2 mb-4">
+              <Truck className="h-6 w-6 text-primary" />
+              <Badge variant="secondary">Delivery Services</Badge>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
+              Fast & Reliable Delivery
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We deliver your gadgets and tech products safely and quickly across Lagos and nationwide. 
+              Track your orders in real-time and enjoy flexible delivery options.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">Delivery Features</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {deliveryFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Card className="shadow-tech">
+              <CardHeader>
+                <CardTitle className="text-xl">Delivery Zones & Pricing</CardTitle>
+                <CardDescription>
+                  Choose the delivery option that works best for you
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center p-3 bg-muted/30 rounded-lg">
+                    <div>
+                      <div className="font-medium">Express Delivery (2-4 hours)</div>
+                      <div className="text-sm text-muted-foreground">Lagos Island & Mainland</div>
+                    </div>
+                    <div className="text-primary font-bold">₦2,000</div>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-muted/30 rounded-lg">
+                    <div>
+                      <div className="font-medium">Same Day Delivery</div>
+                      <div className="text-sm text-muted-foreground">Within Lagos State</div>
+                    </div>
+                    <div className="text-primary font-bold">₦1,500</div>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-muted/30 rounded-lg">
+                    <div>
+                      <div className="font-medium">Standard Delivery (24-48 hours)</div>
+                      <div className="text-sm text-muted-foreground">Lagos & Surrounding States</div>
+                    </div>
+                    <div className="text-primary font-bold">₦1,000</div>
+                  </div>
+                  <div className="flex justify-between items-center p-3 bg-green-50 border border-green-200 rounded-lg">
+                    <div>
+                      <div className="font-medium text-green-700">Free Delivery</div>
+                      <div className="text-sm text-green-600">Orders above ₦50,000</div>
+                    </div>
+                    <div className="text-green-700 font-bold">Free</div>
+                  </div>
+                </div>
+                <Button className="w-full mt-6 tech-gradient hover:shadow-glow transition-all duration-300">
+                  Track Your Order
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Gadget Sales Section */}
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center space-x-2 mb-4">

@@ -17,6 +17,7 @@ import {
   Mail
 } from "lucide-react";
 import teamImage from "@/assets/team-photo.jpg";
+import aboutHero from "@/assets/about-hero.jpg";
 
 const About = () => {
   const milestones = [
@@ -111,18 +112,27 @@ const About = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-muted/30 to-background">
-        <div className="absolute inset-0 hero-gradient opacity-5"></div>
+      <section className="py-20 bg-gradient-to-br from-background via-muted/30 to-background relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${aboutHero})`,
+            filter: 'brightness(0.4)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-background/70 to-accent/30"></div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">
               👥 About JE Tech Hub
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">
-              Delivering Top-Tier 
-              <span className="bg-gradient-to-r from-tech-blue to-tech-purple bg-clip-text text-transparent"> Tech Solutions</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-text-reveal">
+              <span className="inline-block animate-word-reveal" style={{animationDelay: '0.2s'}}>Delivering</span>{' '}
+              <span className="inline-block animate-word-reveal" style={{animationDelay: '0.4s'}}>Top-Tier</span>{' '}
+              <span className="inline-block animate-word-reveal bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" style={{animationDelay: '0.6s'}}>Tech</span>{' '}
+              <span className="inline-block animate-word-reveal bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" style={{animationDelay: '0.8s'}}>Solutions</span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-white/90 mb-8 animate-fade-in-up" style={{animationDelay: '1s'}}>
               At JE Tech Hub, we are driven by a single, powerful mission: to connect education and technology through innovative and practical tutoring that enhances tech skills for individuals and communities alike.
             </p>
           </div>
@@ -134,8 +144,9 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-                Our Journey
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-text-reveal">
+                <span className="inline-block animate-word-reveal" style={{animationDelay: '0.2s'}}>Our</span>{' '}
+                <span className="inline-block animate-word-reveal text-primary" style={{animationDelay: '0.4s'}}>Journey</span>
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
@@ -153,15 +164,27 @@ const About = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src={teamImage} 
-                alt="JE Tech Hub Team" 
-                className="rounded-2xl shadow-tech w-full"
-              />
-              <Card className="absolute -bottom-6 -left-6 bg-white shadow-lg border">
+              <div className="relative overflow-hidden rounded-2xl shadow-tech">
+                <img 
+                  src={teamImage} 
+                  alt="JE Tech Hub Team working together" 
+                  className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent"></div>
+              </div>
+              
+              {/* Floating Stats Cards */}
+              <Card className="absolute -bottom-6 -left-6 bg-white shadow-xl border-0 animate-float">
                 <CardContent className="p-4">
                   <div className="text-2xl font-bold text-primary">1,000+</div>
                   <div className="text-sm text-muted-foreground">Lives Transformed</div>
+                </CardContent>
+              </Card>
+              
+              <Card className="absolute -top-4 -right-4 bg-white shadow-xl border-0 animate-pulse-slow">
+                <CardContent className="p-3">
+                  <div className="text-lg font-bold text-accent">6+</div>
+                  <div className="text-xs text-muted-foreground">Years Experience</div>
                 </CardContent>
               </Card>
             </div>
@@ -288,10 +311,10 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member, index) => (
               <Card key={index} className="group hover:shadow-tech transition-all duration-300 hover:-translate-y-1">
-                <CardHeader className="text-center">
-                  <div className="w-20 h-20 bg-gradient-to-r from-tech-blue to-tech-purple rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-10 w-10 text-white" />
-                  </div>
+                 <CardHeader className="text-center">
+                   <div className="w-20 h-20 bg-gradient-to-r from-tech-blue to-tech-purple rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-glow transition-all duration-300">
+                     <Users className="h-10 w-10 text-white" />
+                   </div>
                   <CardTitle className="group-hover:text-primary transition-colors">
                     {member.name}
                   </CardTitle>

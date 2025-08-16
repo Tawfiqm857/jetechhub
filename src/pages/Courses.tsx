@@ -188,26 +188,39 @@ const Courses = () => {
                 )}
                 
                 <CardHeader className="pb-4">
-                  <div className="relative mb-4">
-                    <img 
-                      src={course.image} 
-                      alt={course.title}
-                      className="w-full h-48 object-cover rounded-lg"
-                    />
-                    <Badge variant="outline" className="absolute top-2 right-2 bg-background/80 backdrop-blur text-primary font-semibold">
-                      {course.price}
-                    </Badge>
-                    <div className="absolute top-2 left-2 w-10 h-10 bg-gradient-to-r from-tech-blue to-tech-purple rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300">
-                      <course.icon className="h-5 w-5 text-white" />
-                    </div>
-                  </div>
+                   <div className="relative mb-6 overflow-hidden rounded-lg">
+                     <img 
+                       src={course.image} 
+                       alt={`${course.title} training course at JE Tech Hub`}
+                       className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                     <Badge variant="outline" className="absolute top-3 right-3 bg-white/90 backdrop-blur text-primary font-semibold border-primary/20">
+                       {course.price}
+                     </Badge>
+                     <div className="absolute top-3 left-3 w-12 h-12 bg-gradient-to-r from-tech-blue to-tech-purple rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300 shadow-lg">
+                       <course.icon className="h-6 w-6 text-white" />
+                     </div>
+                     <div className="absolute bottom-3 left-3 right-3">
+                       <div className="text-white">
+                         <div className="text-sm font-medium opacity-90">{course.level}</div>
+                         <div className="text-xs opacity-75">{course.duration} • {course.students} enrolled</div>
+                       </div>
+                     </div>
+                   </div>
                   
                   <CardTitle className="group-hover:text-primary transition-colors text-xl">
                     {course.title}
                   </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {course.description}
-                  </CardDescription>
+                   <CardDescription className="text-base leading-relaxed mb-4">
+                     {course.description}
+                   </CardDescription>
+                   
+                   <div className="flex flex-wrap gap-2 mb-4">
+                     <Badge variant="secondary" className="text-xs">{course.level}</Badge>
+                     <Badge variant="outline" className="text-xs">{course.duration}</Badge>
+                     <Badge variant="outline" className="text-xs">{course.students} students</Badge>
+                   </div>
                 </CardHeader>
 
                 <CardContent>

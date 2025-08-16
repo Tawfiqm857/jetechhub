@@ -243,6 +243,38 @@ All colors MUST be HSL.
     }
   }
   
+  /* Text revealing animations */
+  @keyframes textReveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes wordReveal {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-text-reveal {
+    animation: textReveal 1s ease-out forwards;
+  }
+  
+  .animate-word-reveal {
+    animation: wordReveal 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;

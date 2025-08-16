@@ -34,6 +34,7 @@ import {
   Monitor
 } from "lucide-react";
 import heroImage from "@/assets/hero-tech-hub.jpg";
+import heroBackground from "@/assets/hero-background.jpg";
 
 const Index = () => {
   const { toast } = useToast();
@@ -185,7 +186,14 @@ const Index = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-background via-secondary/30 to-accent/5 py-16 lg:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${heroBackground})`,
+            filter: 'brightness(0.3)'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-background/80 to-accent/20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="space-y-6 lg:space-y-8 animate-fade-in-up">
@@ -193,10 +201,14 @@ const Index = () => {
                 <Badge variant="outline" className="px-4 py-2 text-primary border-primary/30 animate-bounce-in">
                   🚀 Leading Tech Education Hub in Nigeria
                 </Badge>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-tight">
-                  Master Technology, Shape Your Future
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight animate-text-reveal">
+                  <span className="inline-block animate-word-reveal" style={{animationDelay: '0.2s'}}>Master</span>{' '}
+                  <span className="inline-block animate-word-reveal" style={{animationDelay: '0.4s'}}>Technology,</span>{' '}
+                  <span className="inline-block animate-word-reveal bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" style={{animationDelay: '0.6s'}}>Shape</span>{' '}
+                  <span className="inline-block animate-word-reveal bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" style={{animationDelay: '0.8s'}}>Your</span>{' '}
+                  <span className="inline-block animate-word-reveal bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent" style={{animationDelay: '1s'}}>Future</span>
                 </h1>
-                <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                <p className="text-base md:text-lg lg:text-xl text-white/90 max-w-2xl leading-relaxed animate-fade-in-up" style={{animationDelay: '1.2s'}}>
                   Join Nigeria's premier tech hub where innovation meets education. 
                   Learn cutting-edge skills from industry experts and launch your tech career with confidence.
                 </p>
