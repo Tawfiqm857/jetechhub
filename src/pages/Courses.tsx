@@ -22,6 +22,7 @@ import dataAnalysisImage from "@/assets/course-data-analysis.jpg";
 import digitalMarketingImage from "@/assets/course-digital-marketing.jpg";
 import videoEditingImage from "@/assets/course-video-editing.jpg";
 import graphicsDesignImage from "@/assets/course-graphics-design.jpg";
+import coursesHeroImage from "@/assets/courses-hero.jpg";
 
 const Courses = () => {
   const courses = [
@@ -30,7 +31,7 @@ const Courses = () => {
       title: "Software Development",
       description: "Master modern programming languages including Python, JavaScript, React, and Node.js. Build full-stack applications and prepare for developer roles.",
       duration: "6 months",
-      level: "Beginner to Advanced",
+      level: "Beginner to Intermediate",
       price: "₦150,000",
       students: "120+",
       image: softwareDevImage,
@@ -133,8 +134,12 @@ const Courses = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-muted/30 to-background">
-        <div className="absolute inset-0 hero-gradient opacity-5"></div>
+      <section className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${coursesHeroImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60"></div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">

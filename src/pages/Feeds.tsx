@@ -130,8 +130,12 @@ const Gallery = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <section className="py-20 bg-gradient-to-br from-background via-muted/30 to-background">
-        <div className="absolute inset-0 hero-gradient opacity-5"></div>
+      <section className="relative py-20 bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${feedsHeroImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60"></div>
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-4xl mx-auto">
             <Badge variant="secondary" className="mb-4">
@@ -372,4 +376,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Feeds;

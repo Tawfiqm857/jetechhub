@@ -35,6 +35,9 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-tech-hub.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
+import softwareDevImage from "@/assets/course-software-dev.jpg";
+import uiuxDesignImage from "@/assets/course-uiux-design.jpg";
+import dataAnalysisImage from "@/assets/course-data-analysis.jpg";
 
 const Index = () => {
   const { toast } = useToast();
@@ -352,34 +355,65 @@ const Index = () => {
           </div>
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {courses.map((course, index) => (
-              <Card key={index} className={`group hover:shadow-tech transition-all duration-500 hover-lift border-0 shadow-lg animate-scale-in animate-stagger-${(index % 4) + 1} overflow-hidden`}>
-                <CardHeader className="pb-4">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300 group-hover-scale">
-                      <course.icon className="h-5 lg:h-6 w-5 lg:w-6 text-white" />
+          {[
+            {
+              icon: Code,
+              title: "Software Development",
+              description: "Master Python, JavaScript, React, and Node.js",
+              originalPrice: "₦150,000",
+              price: "₦120,000",
+              image: softwareDevImage
+            },
+            {
+              icon: Palette, 
+              title: "UI/UX Design",
+              description: "Create stunning user experiences and interfaces",
+              originalPrice: "₦100,000", 
+              price: "₦80,000",
+              image: uiuxDesignImage
+            },
+            {
+              icon: BarChart3,
+              title: "Data Analysis", 
+              description: "Learn Python, SQL, and data visualization",
+              originalPrice: "₦130,000",
+              price: "₦105,000", 
+              image: dataAnalysisImage
+            }
+          ].map((course, index) => (
+            <Card key={index} className="group hover:shadow-tech transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+              <CardHeader className="relative pb-4">
+                {/* Course Image */}
+                <div className="relative mb-6 overflow-hidden rounded-lg">
+                  <img 
+                    src={course.image} 
+                    alt={`${course.title} course`}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+                    <div className="flex flex-col items-end">
+                      <span className="text-xs text-muted-foreground line-through">{course.originalPrice}</span>
+                      <span className="text-lg font-bold text-primary">{course.price}</span>
                     </div>
-                    <Badge variant="secondary" className="text-primary font-semibold text-xs lg:text-sm">
-                      {course.duration}
-                    </Badge>
                   </div>
-                  <CardTitle className="group-hover:text-primary transition-colors text-lg lg:text-xl">{course.title}</CardTitle>
-                  <CardDescription className="text-sm lg:text-base">{course.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xl lg:text-2xl font-bold text-primary">{course.price}</span>
-                    <div className="flex items-center text-xs lg:text-sm text-muted-foreground">
-                      <Users className="h-3 lg:h-4 w-3 lg:w-4 mr-1" />
-                      {course.students} students
-                    </div>
+                  <div className="absolute top-3 left-3 w-12 h-12 tech-gradient rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all duration-300">
+                    <course.icon className="h-6 w-6 text-white" />
                   </div>
-                  <Button className="w-full group-hover:bg-primary group-hover:text-white transition-all duration-300 hover-scale text-sm lg:text-base">
+                </div>
+                
+                <CardTitle className="group-hover:text-primary transition-colors text-lg lg:text-xl">{course.title}</CardTitle>
+                <CardDescription className="text-sm lg:text-base">{course.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <Button className="w-full tech-gradient hover:shadow-glow transition-all duration-300 text-sm lg:text-base" asChild>
+                  <Link to="/courses">
                     Enroll Now
                     <ArrowRight className="ml-2 h-3 lg:h-4 w-3 lg:w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </CardContent>
-              </Card>
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
             ))}
           </div>
           
