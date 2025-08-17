@@ -16,7 +16,8 @@ const Layout = ({ children }: LayoutProps) => {
     { name: "Courses", path: "/courses" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
-    { name: "Gallery", path: "/gallery" },
+    { name: "Feeds", path: "/feeds" },
+    { name: "Gadgets", path: "/gadgets" },
     { name: "Contact", path: "/contact" },
   ];
 
