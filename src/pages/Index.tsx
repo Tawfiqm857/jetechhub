@@ -95,8 +95,8 @@ const Index = () => {
       title: "Software Development",
       description: "Learn modern programming languages and frameworks",
       duration: "6 months",
-      level: "Beginner to Advanced",
-      price: "₦150,000",
+      level: "Beginner to Intermidiate",
+      price: "₦120,000",
       students: "120+"
     },
     {
@@ -105,7 +105,7 @@ const Index = () => {
       description: "Create beautiful and user-friendly digital experiences",
       duration: "4 months",
       level: "Beginner to Intermediate",
-      price: "₦100,000",
+      price: "₦80,000",
       students: "85+"
     },
     {
@@ -114,7 +114,7 @@ const Index = () => {
       description: "Master data science and analytics tools",
       duration: "5 months",
       level: "Intermediate",
-      price: "₦130,000",
+      price: "₦160,000",
       students: "95+"
     },
     {
@@ -359,25 +359,25 @@ const Index = () => {
             {
               icon: Code,
               title: "Software Development",
-              description: "Master Python, JavaScript, React, and Node.js",
-              originalPrice: "₦150,000",
-              price: "₦120,000",
+              description: "Master Html & Css, JavaScript, Git & Github, React",
+              originalPrice: "₦120,000",
+              price: "₦80,000",
               image: softwareDevImage
             },
             {
               icon: Palette, 
               title: "UI/UX Design",
               description: "Create stunning user experiences and interfaces",
-              originalPrice: "₦100,000", 
-              price: "₦80,000",
+              originalPrice: "₦80,000", 
+              price: "₦70,000",
               image: uiuxDesignImage
             },
             {
               icon: BarChart3,
               title: "Data Analysis", 
               description: "Learn Python, SQL, and data visualization",
-              originalPrice: "₦130,000",
-              price: "₦105,000", 
+              originalPrice: "₦160,000",
+              price: "₦115,000", 
               image: dataAnalysisImage
             }
           ].map((course, index) => (
@@ -538,7 +538,7 @@ const Index = () => {
                 <div className="flex flex-col items-center">
                   <Mail className="h-6 w-6 mb-2 opacity-80" />
                   <p className="text-sm opacity-90">Email Us</p>
-                  <p className="font-semibold">info@jetechhub.com</p>
+                  <p className="font-semibold">info@joexpress07.com</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <MapPin className="h-6 w-6 mb-2 opacity-80" />
