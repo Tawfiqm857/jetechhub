@@ -13,8 +13,9 @@ import {
   Zap
 } from "lucide-react";
 import { useState } from "react";
+import feedsHeroImage from "@/assets/feeds-hero.jpg";
 
-const Gallery = () => {
+const Feeds = () => {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const categories = [
