@@ -334,7 +334,7 @@ const Courses = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-tech-blue to-tech-purple text-white">
+      <section className="py-20 bg-gradient-to-r from-tech-blue to-tech-purple text-black">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
             Ready to Start Your Learning Journey?
