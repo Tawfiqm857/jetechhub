@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Code, Phone, Mail, MapPin } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Menu, X, Code, Phone, Mail, MapPin, User, LogOut, Settings, Shield } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,6 +13,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, profile, signOut } = useAuth();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -54,9 +58,66 @@ const Layout = ({ children }: LayoutProps) => {
                   {item.name}
                 </Link>
               ))}
-              <Button size="sm" className="tech-gradient hover:shadow-glow transition-all duration-300">
-                Enroll Now
-              </Button>
+              
+              {user ? (
+                <div className="flex items-center space-x-4">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                        <Avatar className="h-8 w-8">
+                          <AvatarFallback className="bg-gradient-to-r from-primary to-accent text-white">
+                            {profile?.full_name?.charAt(0) || user.email?.charAt(0) || 'U'}
+                          </AvatarFallback>
+                        </Avatar>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-56" align="end" forceMount>
+                      <div className="flex flex-col space-y-1 p-2">
+                        <p className="text-sm font-medium leading-none">
+                          {profile?.full_name || 'User'}
+                        </p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                          {user.email}
+                        </p>
+                        <p className="text-xs leading-none text-muted-foreground capitalize">
+                          {profile?.user_type || 'member'}
+                        </p>
+                      </div>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <User className="mr-2 h-4 w-4" />
+                        <span>Profile</span>
+                      </DropdownMenuItem>
+                      {profile?.user_type === 'admin' && (
+                        <DropdownMenuItem asChild>
+                          <Link to="/admin">
+                            <Shield className="mr-2 h-4 w-4" />
+                            <span>Admin Dashboard</span>
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
+                      <DropdownMenuItem>
+                        <Settings className="mr-2 h-4 w-4" />
+                        <span>Settings</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={signOut}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Log out</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              ) : (
+                <div className="flex items-center space-x-2">
+                  <Button size="sm" variant="ghost" asChild>
+                    <Link to="/auth">Sign In</Link>
+                  </Button>
+                  <Button size="sm" className="tech-gradient hover:shadow-glow transition-all duration-300" asChild>
+                    <Link to="/auth">Enroll Now</Link>
+                  </Button>
+                </div>
+              )}
             </nav>
 
             {/* Mobile Menu Button */}
@@ -88,9 +149,32 @@ const Layout = ({ children }: LayoutProps) => {
                   </Link>
                 ))}
                 <div className="px-4 pt-2">
-                  <Button size="sm" className="w-full tech-gradient">
-                    Enroll Now
-                  </Button>
+                  {user ? (
+                    <div className="space-y-2">
+                      <div className="p-2 border rounded-lg">
+                        <p className="text-sm font-medium">{profile?.full_name || 'User'}</p>
+                        <p className="text-xs text-muted-foreground">{user.email}</p>
+                        <p className="text-xs text-muted-foreground capitalize">{profile?.user_type || 'member'}</p>
+                      </div>
+                      {profile?.user_type === 'admin' && (
+                        <Button size="sm" className="w-full" variant="outline" asChild>
+                          <Link to="/admin">Admin Dashboard</Link>
+                        </Button>
+                      )}
+                      <Button size="sm" className="w-full" variant="outline" onClick={signOut}>
+                        Sign Out
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      <Button size="sm" className="w-full" variant="outline" asChild>
+                        <Link to="/auth">Sign In</Link>
+                      </Button>
+                      <Button size="sm" className="w-full tech-gradient" asChild>
+                        <Link to="/auth">Enroll Now</Link>
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </nav>
             </div>
