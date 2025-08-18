@@ -40,9 +40,14 @@ All colors MUST be HSL.
     --tech-blue: 220 100% 25%;
     --tech-orange: 25 95% 53%;
     --tech-cyan: 196 94% 67%;
-    --tech-gradient: linear-gradient(135deg, hsl(220 100% 25%) 0%, hsl(25 95% 53%) 100%);
+    --tech-gradient: linear-gradient(
+  135deg,
+  hsl(220 100% 25%) 0%,   /* blue starts */
+  darkblue 70%,  /* blue occupies until 80% */
+  hsl(25 95% 53%) 100%    /* orange fills the rest */
+);
     --tech-gradient-subtle: linear-gradient(135deg, hsl(220 100% 25% / 0.1) 0%, hsl(25 95% 53% / 0.1) 100%);
-    --hero-gradient: linear-gradient(135deg, hsl(220 100% 25%) 0%, hsl(25 95% 53%) 50%, hsl(196 94% 67%) 100%);
+    --hero-gradient: linear-gradient(135deg, hsl(220 100% 25%) 40%, hsl(25 95% 53%) 45%,darkblue 70%);
     
     /* Shadows */
     --shadow-tech: 0 10px 40px hsl(236 72% 24% / 0.1);
