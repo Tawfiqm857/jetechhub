@@ -354,7 +354,7 @@ const Courses = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-primary transition-colors"
+              className="border-white text-black hover:shadow-glow transition-all duration-300 hover:text-primary transition-colors"
             >
               Download Brochure
             </Button>
