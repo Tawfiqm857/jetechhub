@@ -1,18 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/jetechhub/", // 👈 important for GitHub Pages
+  base: "/jetechhub/", // 👈 IMPORTANT: use your repo name here
   server: {
     host: "::",
-    port: 8080, // 👈 set a port (default is 5173, you can change if needed)
+    port: 5173, // or any port you prefer
   },
   plugins: [
     react(),
-    mode === "development" && componentTagger(),
+    // if you only want componentTagger in dev mode
+    mode === "development" && (await import("lovable-tagger")).componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
