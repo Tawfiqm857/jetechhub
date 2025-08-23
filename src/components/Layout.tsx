@@ -96,6 +96,22 @@ const Layout = ({ children }: LayoutProps) => {
                           </Link>
                         </DropdownMenuItem>
                       )}
+                      {profile?.user_type === 'student' && (
+                        <DropdownMenuItem asChild>
+                          <Link to="/student-dashboard">
+                            <User className="mr-2 h-4 w-4" />
+                            <span>Student Dashboard</span>
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
+                      {profile?.user_type === 'member' && (
+                        <DropdownMenuItem asChild>
+                          <Link to="/member-dashboard">
+                            <User className="mr-2 h-4 w-4" />
+                            <span>Member Dashboard</span>
+                          </Link>
+                        </DropdownMenuItem>
+                      )}
                       <DropdownMenuItem>
                         <Settings className="mr-2 h-4 w-4" />
                         <span>Settings</span>
@@ -159,6 +175,16 @@ const Layout = ({ children }: LayoutProps) => {
                       {profile?.user_type === 'admin' && (
                         <Button size="sm" className="w-full" variant="outline" asChild>
                           <Link to="/admin">Admin Dashboard</Link>
+                        </Button>
+                      )}
+                      {profile?.user_type === 'student' && (
+                        <Button size="sm" className="w-full" variant="outline" asChild>
+                          <Link to="/student-dashboard">Student Dashboard</Link>
+                        </Button>
+                      )}
+                      {profile?.user_type === 'member' && (
+                        <Button size="sm" className="w-full" variant="outline" asChild>
+                          <Link to="/member-dashboard">Member Dashboard</Link>
                         </Button>
                       )}
                       <Button size="sm" className="w-full" variant="outline" onClick={signOut}>

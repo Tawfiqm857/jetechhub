@@ -26,7 +26,7 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [userType, setUserType] = useState<'member' | 'student'>('member');
-  const { signIn, signUp, user } = useAuth();
+  const { signIn, signUp, user, profile } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -46,10 +46,23 @@ const Auth = () => {
 
   // Redirect if already logged in
   useEffect(() => {
-    if (user) {
-      navigate('/', { replace: true });
+    if (user && profile) {
+      // Redirect to appropriate dashboard based on user type
+      switch (profile.user_type) {
+        case 'admin':
+          navigate('/admin', { replace: true });
+          break;
+        case 'student':
+          navigate('/student-dashboard', { replace: true });
+          break;
+        case 'member':
+          navigate('/member-dashboard', { replace: true });
+          break;
+        default:
+          navigate('/', { replace: true });
+      }
     }
-  }, [user, navigate]);
+  }, [user, profile, navigate]);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,8 +70,21 @@ const Auth = () => {
 
     const { error } = await signIn(signInData.email, signInData.password, rememberMe);
     
-    if (!error) {
-      navigate('/', { replace: true });
+    if (!error && profile) {
+      // Redirect to appropriate dashboard based on user type
+      switch (profile.user_type) {
+        case 'admin':
+          navigate('/admin', { replace: true });
+          break;
+        case 'student':
+          navigate('/student-dashboard', { replace: true });
+          break;
+        case 'member':
+          navigate('/member-dashboard', { replace: true });
+          break;
+        default:
+          navigate('/', { replace: true });
+      }
     }
     
     setIsLoading(false);
@@ -175,11 +201,15 @@ const Auth = () => {
       <div className="container mx-auto px-4 py-8 lg:py-16">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold mb-2">Welcome to TechHub</h1>
-            <p className="text-muted-foreground">Sign in to your account or create a new one</p>
+            <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              Welcome to TechHub
+            </h1>
+            <p className="text-muted-foreground">
+              Join our community of tech enthusiasts and professionals
+            </p>
           </div>
 
-          <Card className="shadow-tech">
+          <Card className="shadow-tech border-0 bg-card/50 backdrop-blur-sm">
             <Tabs defaultValue="signin" className="w-full">
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="signin">Sign In</TabsTrigger>
@@ -196,11 +226,11 @@ const Auth = () => {
                 <CardContent className="space-y-4">
                   <form onSubmit={handleSignIn} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="signin-email">Email</Label>
+                      <Label htmlFor="signin-email">Email or Username</Label>
                       <Input
                         id="signin-email"
-                        type="email"
-                        placeholder="Enter your email"
+                        type="text"
+                        placeholder="Enter your email or username"
                         value={signInData.email}
                         onChange={(e) => setSignInData(prev => ({ ...prev, email: e.target.value }))}
                         required
@@ -324,14 +354,28 @@ const Auth = () => {
 
                     <div className="space-y-2">
                       <Label>Account Type</Label>
-                      <RadioGroup value={userType} onValueChange={(value) => setUserType(value as 'member' | 'student')}>
-                        <div className="flex items-center space-x-2">
+                      <RadioGroup 
+                        value={userType} 
+                        onValueChange={(value) => setUserType(value as 'member' | 'student')}
+                        className="grid grid-cols-2 gap-4"
+                      >
+                        <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-muted/50 transition-colors">
                           <RadioGroupItem value="member" id="member" />
-                          <Label htmlFor="member">Member (General Access)</Label>
+                          <Label htmlFor="member" className="cursor-pointer flex-1">
+                            <div>
+                              <p className="font-medium">Member</p>
+                              <p className="text-xs text-muted-foreground">General access to services</p>
+                            </div>
+                          </Label>
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2 p-3 border rounded-lg hover:bg-muted/50 transition-colors">
                           <RadioGroupItem value="student" id="student" />
-                          <Label htmlFor="student">Student (Course Enrollment)</Label>
+                          <Label htmlFor="student" className="cursor-pointer flex-1">
+                            <div>
+                              <p className="font-medium">Student</p>
+                              <p className="text-xs text-muted-foreground">Course enrollment access</p>
+                            </div>
+                          </Label>
                         </div>
                       </RadioGroup>
                     </div>

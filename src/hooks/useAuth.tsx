@@ -8,6 +8,7 @@ interface Profile {
   user_id: string;
   email: string;
   full_name?: string;
+  username?: string;
   user_type: 'member' | 'student' | 'admin';
   phone?: string;
   bio?: string;
@@ -20,7 +21,7 @@ interface AuthContextType {
   profile: Profile | null;
   loading: boolean;
   signUp: (email: string, password: string, fullName: string, userType: 'member' | 'student', rememberMe?: boolean) => Promise<{ error: any }>;
-  signIn: (email: string, password: string, rememberMe?: boolean) => Promise<{ error: any }>;
+  signIn: (emailOrUsername: string, password: string, rememberMe?: boolean) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<Profile>) => Promise<{ error: any }>;
 }
@@ -149,8 +150,31 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  const signIn = async (email: string, password: string, rememberMe = false) => {
+  const signIn = async (emailOrUsername: string, password: string, rememberMe = false) => {
     try {
+      let email = emailOrUsername;
+      
+      // Check if input is username instead of email
+      if (!emailOrUsername.includes('@')) {
+        // Look up email by username
+        const { data: profileData, error: profileError } = await supabase
+          .from('profiles')
+          .select('email')
+          .eq('username', emailOrUsername)
+          .single();
+        
+        if (profileError || !profileData) {
+          toast({
+            title: "Sign In Error",
+            description: "Username not found. Please check your username and try again.",
+            variant: "destructive",
+          });
+          return { error: new Error('Username not found') };
+        }
+        
+        email = profileData.email;
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
